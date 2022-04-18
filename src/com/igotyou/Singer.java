@@ -12,7 +12,6 @@ public class Singer implements Runnable {
   public void run() {
     try {
       String threadName = Thread.currentThread().getName();
-      String str;
       while (song.singNextString(threadName));
     } catch (InterruptedException e) {
       e.printStackTrace();
