@@ -52,16 +52,15 @@ public class Song {
       }
     } while (!names.contains(name));
 
-    buf.add(name);
     if (str != null) {
+      buf.add(name);
       System.out.println(name + ": " + str[1]);
-    }
-
-    if (names != null && buf.size() == names.size()) {
-      counter++;
-      buf.clear();
-    } else {
-      wait(); // Ждём, когда второй поток дойдёт до припева
+      if (buf.size() == names.size()) {
+        counter++;
+        buf.clear();
+      } else {
+        wait(); // Ждём, когда второй поток дойдёт до припева
+      }
     }
 
     notify(); // Пропели - разрешаем двигаться другому потоку дальше
